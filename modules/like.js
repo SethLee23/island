@@ -17,8 +17,6 @@ class LikeModel extends fetch {
     return this.request({
   url: `/classic/${category}/${artId}/favor`
 })
-
-
   }
 
 }

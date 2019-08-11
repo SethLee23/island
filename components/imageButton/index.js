@@ -21,7 +21,6 @@ options: {
    */
   methods: {
     onGetUserInfo(event){
-      console.log('123456')
 this.triggerEvent('deliverUserInfo',event.detail,{})
     }
   }

@@ -10,7 +10,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "muse",
+    "navigationBarTitleText": "休憩",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

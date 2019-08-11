@@ -1,4 +1,4 @@
-// pages/book/book.js
+
 import {
   BookModel
 } from '../../modules/book.js'
@@ -10,14 +10,17 @@ Page({
   data: {
     book: null,
     searching: false,
-    historyList: null,
-    hotKeyword: null,
-    searchedBookList: null,
-    more: false,
-    value: '',
-    finished: false,
     loading: false,
-    notfound: false
+    searchData: {
+      historyList: null,
+      hotKeyword: null,
+      searchedBookList: null,
+      loadMore: false,
+      value: '',
+      finished: false,
+
+      notfound: false
+    }
   },
   onLoad: function(options) {
     wx.showLoading({
@@ -47,23 +50,28 @@ Page({
     this._getsearchingBookList(value)
     this._addSearchHistory()
   },
-  
+
   onReachBottom: function() {
+
     let {
       value,
       searchedBookList,
-      loading,
       finished,
       total
-    } = this.data
+    } = this.data.searchData 
+    let { loading,searchData } = this.data
     if (finished || this._isLocked()) return
     if (value && searchedBookList && searchedBookList.length > 0) {
       let length = searchedBookList.length
-     this._locked()
+      this._locked()
       if (length >= total) {
+        
         this.setData({
-          finished: true,
-          more: false
+          searchData: Object.assign(searchData, {
+            finished: true,
+            loadMore: false
+          })
+
         })
         return
       }
@@ -73,42 +81,58 @@ Page({
   },
   // helper
   _initialData: function() {
+    let {searchData } = this.data
     this.setData({
-      searchedBookList: [],
-      total: null,
-      more: false,
-      notfound: false
+      searchData: Object.assign(searchData, {
+        searchedBookList: [],
+        total: null,
+        loadMore: false,
+        notfound: false
+      })
     })
   },
   _initialSearchPane: function() {
+    let { searchData } = this.data
     this.setData({
       searching: true,
-      historyList: keyWordModel.getHistory(),
+      searchData: Object.assign(searchData, {
+        historyList: keyWordModel.getHistory(),
+      })
     })
   },
   _initialHotKeyWord() {
+    let { searchData } = this.data
     keyWordModel.getHot().then(res => {
       this.setData({
-        hotKeyword: res.data.hot
+        searchData: Object.assign(searchData, {
+          hotKeyword: res.data.hot
+        })
       })
     })
   },
   _getsearchingBookList: function(value) {
+    let { searchData } = this.data
     BookModel.searchBookList(0, value).then(
       res => {
-        if (res.data.books.length==0){
+        if (res.data.books.length == 0) {
           this.setData({
-            notfound: true
+            searchData: Object.assign(searchData, {
+              notfound: true
+            })
           })
-        }else{
+        } else {
           this.setData({
-            notfound: false
+            searchData: Object.assign(searchData, {
+              notfound: false
+            })
           })
         }
         this.setData({
-          searchedBookList: res.data.books,
-          value: value,
-          total: res.data.total
+          searchData: Object.assign(searchData, {
+            searchedBookList: res.data.books,
+            value: value,
+            total: res.data.total
+          })
         })
         keyWordModel.addToHistory(value)
         wx.hideLoading()
@@ -116,8 +140,11 @@ Page({
     )
   },
   _addSearchHistory: function() {
+    let { searchData } = this.data
     this.setData({
-      historyList: keyWordModel.getHistory()
+      searchData: Object.assign(searchData, {
+        historyList: keyWordModel.getHistory()
+      })
     })
   },
   _getHotBookList: function() {
@@ -129,29 +156,38 @@ Page({
     })
   },
   _loadMore: function(length, value, searchedBookList) {
+    let { searchData } = this.data
     BookModel.searchBookList(length, value).then((res) => {
       this.setData({
-        searchedBookList: searchedBookList.concat(res.data.books),
+        searchData: Object.assign(searchData, {
+          searchedBookList: searchedBookList.concat(res.data.books),
+        })
       })
       this._unLock()
-    },()=>{
+    }, () => {
       //请求失败依旧需要解锁，防止网络断开成为死锁
       this._unLock()
     })
   },
-  _isLocked: function () {
+  _isLocked: function() {
     return this.data.loading ? true : false
   },
-  _locked: function () {
+  _locked: function() {
+    let { searchData } = this.data
     this.setData({
       loading: true,
-      more: true
+      searchData: Object.assign(searchData, {
+        loadMore: true
+      })
     })
   },
-  _unLock: function () {
+  _unLock: function() {
+    let { searchData } = this.data
     this.setData({
       loading: false,
-      more: false
+      searchData: Object.assign(searchData, {
+        loadMore: false
+      })
     })
   },
   onShareAppMessage: function() {

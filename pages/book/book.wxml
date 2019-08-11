@@ -15,4 +15,4 @@
     </view>
   </view>
 </view>
-<v-search wx:else bind:cancel="cancelSearch" bind:search="searchBook" historyList="{{historyList}}" hotKeyword="{{hotKeyword}}" searchedBookList="{{searchedBookList}}" loadMore="{{more}}" finished="{{finished}}" notfound="{{notfound}}"/>
+<v-search wx:else bind:cancel="cancelSearch" bind:search="searchBook" searchData="{{searchData}}"/>

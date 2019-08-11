@@ -1,5 +1,4 @@
 <view class="container">
-
   <view class="header">
     <view class="search-container">
       <image class="icon" src="../images/search.png" />
@@ -15,7 +14,7 @@
       <text>历史搜索</text>
     </view>
     <view class="tags">
-      <block wx:for="{{historyList}}" wx:key="{{index}}">
+      <block wx:for="{{searchData.historyList}}" wx:key="{{index}}">
         <v-tag text="{{item}}" bind:tapping="searchBook"/>
       </block>
     </view>
@@ -28,22 +27,22 @@
       <text>热门搜索</text>
     </view>
      <view class="tags">
-      <block wx:for="{{hotKeyword}}" wx:key="{{index}}">
+      <block wx:for="{{searchData.hotKeyword}}" wx:key="{{index}}">
         <v-tag text="{{item}}" bind:tapping="searchBook"/>
       </block>
     </view>
   </view>
   <view wx:if="{{searching}}"> 
    <view class="books-container" >
-      <block wx:for="{{searchedBookList}}" wx:key="index">   
+      <block wx:for="{{searchData.searchedBookList}}" wx:key="index">   
           <v-book book="{{item}}" class="book">
           </v-book>
       </block>
     </view>
-    <text wx:if="{{notfound}}" class="empty-tip">没有找到书籍</text>
+    <text wx:if="{{searchData.notfound}}" class="empty-tip">没有找到书籍</text>
     <view class="loadingImg">
-     <v-loading wx:if="{{loadMore}}" />
-     <text wx:if="{{finished}}">已经加载完了</text>
+     <v-loading wx:if="{{searchData.loadMore}}" />
+     <text wx:if="{{searchData.finished}}">已经加载完了</text>
     </view>
   </view>
  
