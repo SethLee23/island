@@ -1,4 +1,4 @@
 export const config = {
   baseUrl:'http://bl.7yue.pro/v1',
-  appkey: '*********'
+  appkey: 'AbhC31IG7ruCDp57'
 }

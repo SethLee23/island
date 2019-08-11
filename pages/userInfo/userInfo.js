@@ -2,7 +2,7 @@ import {
   BookModel
 } from '../../modules/book.js'
 import {
- ClassicModel
+  ClassicModel
 } from '../../modules/classic.js'
 Page({
 
@@ -16,7 +16,7 @@ Page({
     favCount: 0,
     classics: null,
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,8 +25,8 @@ Page({
     this.getFavCount()
     this.getFavItem()
   },
-  getFavCount: function(){
-    BookModel.getBookCount().then(res=>{
+  getFavCount: function() {
+    BookModel.getBookCount().then(res => {
       console.log(res.data.count)
       this.setData({
         favCount: res.data.count
@@ -62,8 +62,16 @@ Page({
       })
     }
   },
-  onPreviewTap: function () { },
-  getFavItem: function () {
+  onPreviewTap: function(options) {
+    const {
+      id,
+      type
+    } = options.detail
+    wx.navigateTo({
+      url: `/pages/favClassic/favClassic?type=${type}&&id=${id}`,
+    })
+  },
+  getFavItem: function() {
     ClassicModel.getFavItem().then(res => {
       this.setData({
         classics: res.data

@@ -26,7 +26,7 @@
     <image class="headline" src="/images/my/like.png" />
     <view class="previewContainer">
       <block wx:for="{{classics}}" wx:key="index">
-        <v-item bind:tap="onPreviewTap" class="preview" classic="{{item}}" />
+        <v-item bind:tapitem="onPreviewTap" class="preview" classic="{{item}}" />
       </block>
     </view>
   </view>

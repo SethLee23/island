@@ -1,8 +1,5 @@
 // components/preview/index.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     classic: {
       type: Object,
@@ -34,8 +31,8 @@ Component({
   methods: {
     onTap: function (event) {
       // 注意catchtap与bindtap的区别
-      this.triggerEvent('tap', {
-        cid: this.properties.classic.id,
+      this.triggerEvent('tapitem', {
+        id: this.properties.classic.id,
         type: this.properties.classic.type
       }, {})
     }

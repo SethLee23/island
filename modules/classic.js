@@ -32,27 +32,32 @@ class ClassicModel extends fetch {
     let key = nextOrPrevious === 'next' ? _getKey(index + 1) : _getKey(index - 1)
     console.log(key)
     let classic = wx.getStorageSync(key)
-    if(!classic) {
+    if (!classic) {
       // 不存在于缓存，存储在缓存中
-     return new Promise((resolve,reject)=>{
+      return new Promise((resolve, reject) => {
         this.request({
-         url: `/classic/${index}/${nextOrPrevious}`
-       }).then(res=>{
-         resolve(res.data)
-         wx.setStorageSync(_getKey(res.data.index), res.data)
-       })
-     })
-    }else{
+          url: `/classic/${index}/${nextOrPrevious}`
+        }).then(res => {
+          resolve(res.data)
+          wx.setStorageSync(_getKey(res.data.index), res.data)
+        })
+      })
+    } else {
       // 存在于缓存，直接读取缓存
-      return new Promise ((resolve,reject)=>{
+      return new Promise((resolve, reject) => {
         resolve(classic)
       })
     }
-   
+
   }
   static getFavItem() {
     return this.request({
       url: '/classic/favor'
+    })
+  }
+  static getFavClassicDetail(type, id) {
+    return this.request({
+      url: `/classic/${type}/${id}`
     })
   }
   static isFirst(index) {

@@ -14,6 +14,4 @@
   <v-movie wx:if="{{classicData.type ===100}}" img="{{classicData.image}}" content="{{classicData.content}}"></v-movie>
   <v-music wx:if="{{classicData.type == 200}}" img="{{classicData.image}}" content="{{classicData.content}}" musicSrc="{{classicData.url}}" />
   <v-essay wx:if="{{classicData.type == 300}}" img="{{classicData.image}}" content="{{classicData.content}}" />
-
-  <v-navi class="navi" title="{{classicData.title}}" first="{{first}}" latest="{{latest}}" bind:right="triggerPrevious" bind:left="triggerNext" ></v-navi>
 </view>

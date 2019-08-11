@@ -1,0 +1,44 @@
+.header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ border-top: 1px solid #f5f5f5;
+ border-bottom: 1px solid #f5f5f5; 
+ height: 100rpx;
+ width: 100%;
+}
+.episode {
+  margin-left: 20rpx;
+  margin-top: 4rpx;
+}
+.classic-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.like {
+  margin-right: 30rpx;
+  margin-top: 12rpx;
+}
+
+.navi {
+  position: absolute;
+  bottom: 20rpx;
+}
+.shareButton{
+  margin-top:28rpx;
+  margin-left:10rpx;
+}
+
+.share{
+  width:40rpx;
+  height:40rpx;
+}
+.likeContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right:30rpx;
+}

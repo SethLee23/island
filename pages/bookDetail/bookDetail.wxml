@@ -7,7 +7,7 @@
   </view>
   <view class="subContainer">
     <text class="headline">短评</text>
-    <text class="shadow" wx:if="{{comments===false}}">还没有短评</text>
+    <text class="shadow" wx:if="{{comments.length==0}}">还没有短评</text>
     <view class="commentContainer">
       <block wx:for="{{utils.limit(comments,10)}}" wx:key="book_id">
         <v-tag text="{{item.content}}" num="{{item.nums}}">
@@ -55,7 +55,7 @@
 
 <view class="postingContainer" wx:if="{{posting}}">
   <view class="postHeader">
-    <text>{{comments===false?'暂无标签':'仅可点击标签 +1'}}</text>
+    <text>{{comments.length==0?'暂无标签':'仅可点击标签 +1'}}</text>
     <text class="cancel" bindtap="cancelPost">取消</text>
   </view>
   <view class="commentContainer">
@@ -65,6 +65,6 @@
       </v-tag>
     </block>
   </view>
-  <input class="post" placeholder="短评最多12个字" bindconfirm="onPostComment"></input>
+   <input class="post" placeholder="短评最多12个字" bindconfirm="onPostComment" confirm-type="send"></input>
 </view>
 <v-mask wx:if="{{posting}}" bindtap="cancelPost" />

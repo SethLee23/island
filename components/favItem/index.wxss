@@ -11,17 +11,17 @@
   width:100%;
   flex-direction: row;
   align-items: center; 
-  justify-content: space-between;
   height:80rpx;
 }
 
 .tag{
-  margin-left:20rpx;
+  margin-left:10rpx;
   margin-top:-2rpx;
   height:40rpx;  
   width:72rpx ;
   font-size:24rpx;
   background-color:#f7f7f7 !important;
+  white-space: nowrap
 }
 
 .like{

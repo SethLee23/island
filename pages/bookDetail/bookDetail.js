@@ -26,6 +26,9 @@ Page({
       title: '加载中',
     })
     const id = options.id
+    this.initialBookDetail(id)
+  },
+  initialBookDetail(id){
     let detail = BookModel.getBookDetail(id)
     let comments = BookModel.getBookComment(id)
     let likeStatus = BookModel.getBookLikeStatus(id)

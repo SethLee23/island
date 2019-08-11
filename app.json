@@ -4,7 +4,8 @@
     "pages/book/book",
     "pages/userInfo/userInfo",
     "pages/bookDetail/bookDetail",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/favClassic/favClassic"
   ],
   "window": {
     "backgroundTextStyle": "dark",

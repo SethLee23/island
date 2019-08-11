@@ -8,9 +8,6 @@ import {
 } from '../../modules/like.js'
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     classicData: null,
     latest: true,
@@ -19,9 +16,6 @@ Page({
     likeStatus: false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     ClassicModel.getLatest().then(res => {
       this.setData({
@@ -32,74 +26,23 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
-
   onLike: function(data) {
-    console.log(data)
     let behavior = data.detail.behavior
     let {
       id,
       type
     } = this.data.classicData
-    LikeModel.likeTheme(behavior, id, type).then(res => {
-      console.log(res.data)
-    }).catch(err => {
-      console.log(err)
-    })
+    LikeModel.likeTheme(behavior, id, type)
   },
+
   triggerPrevious: function() {
     this.updatePane('previous')
   },
+
   triggerNext: function() {
     this.updatePane('next')
   },
+
   _getLikeStatus: function(artId, category) {
     LikeModel.getClassicFavorStatus(artId, category).then(res => {
      this.setData({
@@ -108,6 +51,7 @@ Page({
      })
     })
   },
+  
   // helper
   updatePane(nextOrPrev) {
     let index = this.data.classicData.index
@@ -118,7 +62,7 @@ Page({
           first: ClassicModel.isFirst(res.index),
           latest: ClassicModel.isLatest(res.index)
         })
-        console.log('更新')
+        // console.log('更新')
         this._getLikeStatus(res.id,res.type)
       }
     )
