@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "v-tag": "/components/tag/index",
+    "v-button":"/components/imageButton/index",
+    "v-item": "/components/favItem/index"
+  },
+  "backgroundColor": "#f5f5f5"
+}

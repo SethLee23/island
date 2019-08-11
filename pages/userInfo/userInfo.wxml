@@ -1,0 +1,33 @@
+<view class="userContainer">
+  <image src="/images/my/my@bg.png" class="bg" />
+  <!-- 只能显示用户信息 -->
+  <!-- <open-data type="userAvatarUrl" /> -->
+  <v-button wx:if="{{!authorized}}" open-type="getUserInfo" class="avatarPosition" bind:deliverUserInfo="onGetUserInfo">
+    <image slot="img" class="avatar" src="{{defaultSrc}}" />
+  </v-button>
+
+  <view wx:if="{{authorized}}" class="avatarContainer avatarPosition">
+    <image src="{{userInfo.avatarUrl}}" class="avatar" />
+    <text>{{userInfo.nickName}}</text>
+  </view>
+
+  <view class="aboutContainer">
+    <view class="aboutUs">
+      <image src="/images/my/about.png" />
+      <text class="description" bindtap="onJumpToAbout">关于我们</text>
+    </view>
+    <view class="aboutUs">
+    <text class="bookNum">{{favCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+     
+  </view>
+  <view class="likeContainer">
+    <image class="headline" src="/images/my/like.png" />
+    <view class="previewContainer">
+      <block wx:for="{{classics}}" wx:key="index">
+        <v-item bind:tap="onPreviewTap" class="preview" classic="{{item}}" />
+      </block>
+    </view>
+  </view>
+</view>

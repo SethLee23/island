@@ -1,0 +1,20 @@
+<!--pages/classic/classic.wxml-->
+<view class="classic-container">
+
+  <view class="header">
+    <v-episode class="episode" index="{{classicData.index}}" />
+    <view class="likeContainer">
+      <v-like count="{{ likeCount }}" like="{{likeStatus}}" bind:like="onLike" class="like"></v-like>
+      <v-button open-type="share" class="shareButton">
+        <image class="share" slot="img" src="/images/icon/share.png" />
+      </v-button>
+    </view>
+
+  </view>
+  <v-movie wx:if="{{classicData.type ===100}}" img="{{classicData.image}}" content="{{classicData.content}}"></v-movie>
+  <v-music wx:if="{{classicData.type == 200}}" img="{{classicData.image}}" content="{{classicData.content}}" musicSrc="{{classicData.url}}" />
+  <v-essay wx:if="{{classicData.type == 300}}" img="{{classicData.image}}" content="{{classicData.content}}" />
+
+  <v-navi class="navi" title="{{classicData.title}}" first="{{first}}" latest="{{latest}}" bind:right="triggerPrevious" bind:left="triggerNext"></v-navi>
+
+</view>

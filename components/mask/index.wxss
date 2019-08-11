@@ -1,0 +1,9 @@
+.mask {
+  background: #000000;
+  opacity: 0.6;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  position: fixed;
+}

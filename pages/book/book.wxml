@@ -1,0 +1,18 @@
+
+<view class="bookContainer" wx:if="{{!searching}}">
+  <view class="header">
+    <view class="box" bindtap="onSearch">
+      <image src="/images/icon/search.png" class="searchImg" />
+      <text>搜索书籍</text>
+    </view>
+  </view>
+  <view class="subContainer">
+    <image class="headImg" src="/images/book/quality.png" />
+    <view class="bookStore">
+      <block wx:for="{{book}}" wx:key="id">   
+          <v-book book="{{item}}" class="books" />
+      </block>
+    </view>
+  </view>
+</view>
+<v-search wx:else bind:cancel="cancelSearch" bind:search="searchBook" historyList="{{historyList}}" hotKeyword="{{hotKeyword}}" searchedBookList="{{searchedBookList}}" loadMore="{{more}}" finished="{{finished}}" notfound="{{notfound}}"/>

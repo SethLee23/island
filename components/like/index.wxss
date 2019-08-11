@@ -1,0 +1,17 @@
+/* components/like/index.wxss */
+.likeContainer {
+  /* 自适应宽度劣势，容易出现跳动，定宽对数据进行控制 */
+  display: inline-flex;
+  width: 90rpx;
+}
+.img {
+  width: 32rpx;
+  height: 28rpx;
+  padding-top: 10rpx;
+}
+.num {
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #bbb;
+  margin-left: 6rpx;
+  }

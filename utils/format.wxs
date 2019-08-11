@@ -1,0 +1,14 @@
+var format = function(str) {
+  var reg = getRegExp('\\\\n', 'g')
+  return str.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;')
+}
+var limit = function(arr, length) {
+  if (arr) {
+    return arr.slice(0, length)
+  }
+  return
+}
+module.exports = {
+  format: format,
+  limit: limit
+}

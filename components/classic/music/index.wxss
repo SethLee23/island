@@ -1,0 +1,42 @@
+.musicContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.musicImg {
+  width: 422rpx;
+  height: 422rpx;
+  margin-top: 60rpx;
+  border-radius: 50%;
+}
+
+.musicImg.rotation {
+  animation: roll 10s infinite linear;
+}
+
+.musicController {
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  bottom: 270rpx;
+}
+
+.tagImg {
+  width: 44rpx;
+  height: 128rpx;
+  position: relative;
+  right: 310rpx;
+  bottom: 160rpx;
+}
+
+@keyframes roll {
+  0% {
+    rotate: 0;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
