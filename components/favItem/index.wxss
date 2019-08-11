@@ -15,7 +15,7 @@
 }
 
 .tag{
-  margin-left:10rpx;
+  margin-left:8rpx;
   margin-top:-2rpx;
   height:40rpx;  
   width:72rpx ;
@@ -27,6 +27,7 @@
 .like{
   margin-top:4rpx;
   margin-right:4rpx;
+  margin-left: 20rpx;
 }
 
 .other-img{
